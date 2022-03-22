@@ -1,18 +1,18 @@
 from aiogram.types import ReplyKeyboardMarkup, KeyboardButton
 
 schedule_menu = ReplyKeyboardMarkup(
-    keyboard = [
+    keyboard=[
         [
-            KeyboardButton(text = 'Понедельник'),
-            KeyboardButton(text = 'Вторник'),
+            KeyboardButton(text='Понедельник'),
+            KeyboardButton(text='Вторник'),
         ],
         [
-            KeyboardButton(text = 'Среда'),
-            KeyboardButton(text = 'Четверг'),
+            KeyboardButton(text='Среда'),
+            KeyboardButton(text='Четверг'),
         ],
         [
-            KeyboardButton(text = 'Пятница'),
+            KeyboardButton(text='Пятница'),
         ],
     ],
-    resize_keyboard = True
+    resize_keyboard=True
 )

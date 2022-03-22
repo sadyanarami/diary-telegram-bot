@@ -1,19 +1,17 @@
-import pytesseract
-from PIL import Image
 from aiogram import types
 from aiogram.dispatcher import FSMContext
 
+from keyboards.default import admin_dz_menu
 from loader import dp
 from states.loadDZ import LoadDz
-
-from keyboards.default import admin_dz_menu
 
 
 @dp.message_handler(text='/load_dz@schooldiary10bot')
 async def enter_photo_state(message: types.Message):
     await message.answer("Выберите день недели", reply_markup=admin_dz_menu)
 
-@dp.message_handler(text="/Понедельник/")
+
+@dp.message_handler(text="/Понедельник/", state=LoadDz.Q1)
 async def get_dz_monday(message: types.Message):
     await message.answer('Отправьте фото')
     await LoadDz.Q1.set()
@@ -24,7 +22,8 @@ async def get_dz_monday(message: types.Message):
         await message.answer('Фото успешно получено!')
         await state.reset_state()
 
-@dp.message_handler(text="/Вторник/")
+
+@dp.message_handler(text="/Вторник/", state=LoadDz.Q1)
 async def get_dz_monday(message: types.Message):
     await message.answer('Отправьте фото')
     await LoadDz.Q1.set()
@@ -34,8 +33,9 @@ async def get_dz_monday(message: types.Message):
         await message.photo[-1].download('downloaded-photo/tuesday_dz.jpg')
         await message.answer('Фото успешно получено!')
         await state.reset_state()
-    
-@dp.message_handler(text="/Среда/")
+
+
+@dp.message_handler(text="/Среда/", state=LoadDz.Q1)
 async def get_dz_monday(message: types.Message):
     await message.answer('Отправьте фото')
     await LoadDz.Q1.set()
@@ -46,7 +46,8 @@ async def get_dz_monday(message: types.Message):
         await message.answer('Фото успешно получено!')
         await state.reset_state()
 
-@dp.message_handler(text="/Четверг/")
+
+@dp.message_handler(text="/Четверг/", state=LoadDz.Q1)
 async def get_dz_monday(message: types.Message):
     await message.answer('Отправьте фото')
     await LoadDz.Q1.set()
@@ -57,7 +58,8 @@ async def get_dz_monday(message: types.Message):
         await message.answer('Фото успешно получено!')
         await state.reset_state()
 
-@dp.message_handler(text="/Пятница/")
+
+@dp.message_handler(text="/Пятница/", state=LoadDz.Q1)
 async def get_dz_monday(message: types.Message):
     await message.answer('Отправьте фото')
     await LoadDz.Q1.set()
