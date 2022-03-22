@@ -9,7 +9,7 @@ from states.loadDZ import LoadDz
 from keyboards.default import admin_dz_menu
 
 
-@dp.message_handler(text='/load_dz')
+@dp.message_handler(text='/load_dz@schooldiary10bot')
 async def enter_photo_state(message: types.Message):
     await message.answer("Выберите день недели", reply_markup=admin_dz_menu)
 
