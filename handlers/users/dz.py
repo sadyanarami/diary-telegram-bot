@@ -14,4 +14,4 @@ async def bot_start(message: types.Message):
 
     dz = pytesseract.image_to_string(img, lang='rus', config=custom_config)
 
-    await message.reply(dz)
+    await message.answer(dz)
