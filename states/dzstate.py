@@ -1,5 +1,5 @@
 from aiogram.dispatcher.filters.state import StatesGroup, State
 
 
-class OnSchedule(StatesGroup):
+class OnDz(StatesGroup):
     Q1 = State()

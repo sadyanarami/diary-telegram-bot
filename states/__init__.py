@@ -1,2 +1,2 @@
 from .loadDZ import LoadDz
-from .schedulestate import OnSchedule
+from .dzstate import OnDz
