@@ -4,4 +4,5 @@ async def set_default_commands(dp):
     await dp.bot.set_my_commands([
         types.BotCommand("start", "Запустить бота"),
         types.BotCommand("dz", "Получить домашнее задание"),
+        types.BotCommand("/load dz", "Загрузить дз"),
     ])
