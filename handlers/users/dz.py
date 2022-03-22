@@ -1,18 +1,21 @@
-from aiogram import types
-
-from loader import dp
-
 import pytesseract
 from PIL import Image
+from aiogram import types
+from aiogram.dispatcher import FSMContext
 
-from keyboards.default import dz_menu
+from keyboards.default import schedule_menu
+from loader import dp
+from states.schedulestate import OnSchedule
+
 
 @dp.message_handler(text='/dz')
 async def enter_photo_state(message: types.Message):
-    await message.answer("Выберите день недели", reply_markup=dz_menu)
+    await OnSchedule.Q1.set()
+    await message.answer("Выберите день недели", reply_markup=schedule_menu)
 
-@dp.message_handler(text="*Понедельник*")
-async def bot_start(message: types.Message):
+
+@dp.message_handler(text="Понедельник", state=OnSchedule.Q1)
+async def bot_start(message: types.Message, state: FSMContext):
     img = Image.open('downloaded-photo/monday_dz.jpg')
     pytesseract.pytesseract.tesseract_cmd = r'C:\Program Files\Tesseract-OCR\tesseract.exe'
 
@@ -21,9 +24,11 @@ async def bot_start(message: types.Message):
     monday_dz = pytesseract.image_to_string(img, lang='rus', config=custom_config)
 
     await message.answer(monday_dz)
+    await state.reset_state()
 
-@dp.message_handler(text="*Вторник*")
-async def bot_start(message: types.Message):
+
+@dp.message_handler(text="Вторник", state=OnSchedule.Q1)
+async def bot_start(message: types.Message, state: FSMContext):
     img = Image.open('downloaded-photo/tuesday_dz.jpg')
     pytesseract.pytesseract.tesseract_cmd = r'C:\Program Files\Tesseract-OCR\tesseract.exe'
 
@@ -32,9 +37,11 @@ async def bot_start(message: types.Message):
     tuesday_dz = pytesseract.image_to_string(img, lang='rus', config=custom_config)
 
     await message.answer(tuesday_dz)
+    await state.reset_state()
 
-@dp.message_handler(text="*Среда*")
-async def bot_start(message: types.Message):
+
+@dp.message_handler(text="Среда", state=OnSchedule.Q1)
+async def bot_start(message: types.Message, state: FSMContext):
     img = Image.open('downloaded-photo/wednesday_dz.jpg')
     pytesseract.pytesseract.tesseract_cmd = r'C:\Program Files\Tesseract-OCR\tesseract.exe'
 
@@ -43,9 +50,11 @@ async def bot_start(message: types.Message):
     wednesday_dz = pytesseract.image_to_string(img, lang='rus', config=custom_config)
 
     await message.answer(wednesday_dz)
+    await state.reset_state()
 
-@dp.message_handler(text="*Четверг*")
-async def bot_start(message: types.Message):
+
+@dp.message_handler(text="Четверг", state=OnSchedule.Q1)
+async def bot_start(message: types.Message, state: FSMContext):
     img = Image.open('downloaded-photo/thursday_dz.jpg')
     pytesseract.pytesseract.tesseract_cmd = r'C:\Program Files\Tesseract-OCR\tesseract.exe'
 
@@ -54,9 +63,11 @@ async def bot_start(message: types.Message):
     thursday_dz = pytesseract.image_to_string(img, lang='rus', config=custom_config)
 
     await message.answer(thursday_dz)
+    await state.reset_state()
 
-@dp.message_handler(text="*Пятница*")
-async def bot_start(message: types.Message):
+
+@dp.message_handler(text="Пятница", state=OnSchedule.Q1)
+async def bot_start(message: types.Message, state: FSMContext):
     img = Image.open('downloaded-photo/friday_dz.jpg')
     pytesseract.pytesseract.tesseract_cmd = r'C:\Program Files\Tesseract-OCR\tesseract.exe'
 
@@ -65,3 +76,4 @@ async def bot_start(message: types.Message):
     friday_dz = pytesseract.image_to_string(img, lang='rus', config=custom_config)
 
     await message.answer(friday_dz)
+    await state.reset_state()
