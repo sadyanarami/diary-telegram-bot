@@ -1,6 +1,3 @@
-from ntpath import join
-
-
 joinedFile = open('user_list.txt', 'r')
 
 joinedUsers = set()
