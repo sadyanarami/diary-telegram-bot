@@ -14,7 +14,6 @@ async def enter_photo_state(message: types.Message):
     await message.answer("Выберите день недели", reply_markup=schedule_menu)
 
 
-
 @dp.message_handler(state=OnDz.Q1)
 async def bot_start(message: types.Message, state: FSMContext):
     answer = message.text
@@ -25,7 +24,7 @@ async def bot_start(message: types.Message, state: FSMContext):
         "Четверг": 'thursday',
         "Пятница": 'friday',
     }
-    translator_answer=translator[answer]
+    translator_answer = translator[answer]
     img = Image.open(f'downloaded-photo/{translator_answer}_dz.jpg')
     pytesseract.pytesseract.tesseract_cmd = r'C:\Program Files\Tesseract-OCR\tesseract.exe'
 
@@ -35,6 +34,3 @@ async def bot_start(message: types.Message, state: FSMContext):
 
     await message.answer(dz)
     await state.reset_state()
-
-
-

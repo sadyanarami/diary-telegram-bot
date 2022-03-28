@@ -1,17 +1,18 @@
-from aiogram import types
-
-from loader import dp
-
 import pytesseract
 from PIL import Image
+from aiogram import types
 from aiogram.dispatcher import FSMContext
-from states.dzstate import OnDz
+
 from keyboards.default import schedule_menu
+from loader import dp
+from states.dzstate import OnDz
+
 
 @dp.message_handler(text='/dz@schooldiary10bot')
 async def enter_photo_state(message: types.Message):
     await OnDz.Q1.set()
     await message.answer("Выберите день недели", reply_markup=schedule_menu)
+
 
 @dp.message_handler(state=OnDz.Q1)
 async def bot_start(message: types.Message, state: FSMContext):
@@ -23,7 +24,7 @@ async def bot_start(message: types.Message, state: FSMContext):
         "Четверг": 'thursday',
         "Пятница": 'friday',
     }
-    translator_answer=translator[answer]
+    translator_answer = translator[answer]
     img = Image.open(f'downloaded-photo/{translator_answer}_dz.jpg')
     pytesseract.pytesseract.tesseract_cmd = r'C:\Program Files\Tesseract-OCR\tesseract.exe'
 
