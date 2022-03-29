@@ -12,7 +12,7 @@ async def bot_start(message: types.Message):
             f"Привет, {message.from_user.full_name}! Я бот, который умеет скидывать домашнее задание. Чтобы узнать, что задали на сегодня, напиши /dz")
     else:
         joined_file = open('user_list.txt', 'a')
-        joined_file.write(message.chat.id)
+        joined_file.write(str(message.chat.id) + "\n")
         joinedUsers.add(message.chat.id)
         await message.answer(
             f"Привет, {message.from_user.full_name}! Я бот, который умеет скидывать домашнее задание. Чтобы узнать, что задали на сегодня, напиши /dz")
