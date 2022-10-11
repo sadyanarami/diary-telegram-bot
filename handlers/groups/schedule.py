@@ -11,54 +11,55 @@ async def schedule_message(message: types.Message):
 
 @dp.message_handler(text="Понедельник")
 async def get_monday(message: types.Message):
-    await message.answer('''1. Лит-ра
-2. Геометрия
-3. Обществознание
-4. Обществознание
+    await message.answer('''1.  Разговоры о важном
+2. Биология
+3. Геометрия
+4. Физика
 5. Физика
-6. Физика
-7. Физкультура''')
+6. Физкультура
+7. Экономика''')
 
 
 @dp.message_handler(text="Вторник")
-async def get_tuesday(message: types.Message):
-    await message.answer('''1. Алгебра
-2. Алгебра
-3. Русский язык
-4. Русский ЕГЭ
-5. ОБЖ
-6. Информатика
-7. Английский язык''')
+async def get_monday(message: types.Message):
+    await message.answer('''1. Химия
+2. История
+3. История
+4. Я выбираю
+5. Английский язык
+6. Геометрия
+7. ОБЖ''')
 
 
 @dp.message_handler(text="Среда")
-async def get_wednesday(message: types.Message):
-    await message.answer('''1. Химия
-2. Физкультура
-3. Русский язык
-4. Литература
-5. История
-6. Экономика
-7. Финансовая грамотность''')
+async def get_monday(message: types.Message):
+    await message.answer('''1. География
+2. Обществознание
+3. Биология
+4. Обществознание
+5. Английский язык
+6. Литература
+7. Факультатив (Шахова)''')
 
 
 @dp.message_handler(text="Четверг")
-async def get_thursday(message: types.Message):
-    await message.answer('''1. Алгебра
-2. Алгебра
-3. География
-4. Биология
-5. Английский язык
-6. Проект
-7. Классный час''')
+async def get_monday(message: types.Message):
+    await message.answer('''1. Классный час
+2. Физкультура
+3. Алгебра
+4. Русский язык
+5. Литература
+6. Алгебра
+7. Английский язык
+8. Факультатив (Ашихина)''')
 
 
 @dp.message_handler(text="Пятница")
-async def get_friday(message: types.Message):
-    await message.answer('''1. История
-2. Астрономия
+async def get_monday(message: types.Message):
+    await message.answer('''1. Родной русский
+2. Литература
 3. Право
-4. Литература
-5. Английский язык
-6. Геометрия
-7. Физ-ра''')
+4. Физкультура
+5. Алгебра
+6. Алгебра
+7. Информатика''')
