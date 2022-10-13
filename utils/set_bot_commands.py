@@ -6,5 +6,4 @@ async def set_default_commands(dp):
         types.BotCommand("dz", "Получить домашнее задание"),
         types.BotCommand("schedule", "Узнать расписание предметов"),
         types.BotCommand("table", "Узнать расписание звонков"),
-        types.BotCommand("load_dz", "Загрузить дз (только для админов)"),
     ])
