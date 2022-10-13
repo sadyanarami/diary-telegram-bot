@@ -29,7 +29,7 @@ async def bot_start(message: types.Message, state: FSMContext):
     }
     translator_answer=translator[answer]
     img = Image.open(f'downloaded-photo/{translator_answer}_dz.jpg')
-    pytesseract.pytesseract.tesseract_cmd = r'C:\Program Files\Tesseract-OCR\tesseract.exe'
+    pytesseract.pytesseract.tesseract_cmd = r'Tesseract-OCR\tesseract.exe'
 
     custom_config = r'--oem 3 --psm 6'
 
