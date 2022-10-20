@@ -5,9 +5,10 @@ from aiogram.dispatcher import FSMContext
 from keyboards.default import schedule_menu
 from loader import dp
 from states.loadDZ import LoadDz
+from filters import IsAdmin
 
 
-@dp.message_handler(text='/load_dz 123')
+@dp.message_handler(IsAdmin(), text='/load_dz')
 async def enter_photo_state(message: types.Message):
     await message.answer("Выберите день недели", reply_markup=schedule_menu)
     await LoadDz.InLoadDz.set()
